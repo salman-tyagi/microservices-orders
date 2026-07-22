@@ -10,7 +10,7 @@ import { Message } from 'amqplib';
 import { Ticket } from '../../models/ticket.model';
 
 export class TicketCreatedSubscriber extends Subscriber<TicketCreatedEvent> {
-  readonly queueName = Queues.OrdersService;
+  readonly queueName = Queues.OrdersServiceTicketCreated;
   readonly bindQueueKey = QueuesBindings.TicketCreated;
 
   async onMessage(data: TicketCreatedEvent['data'], msg: Message) {

@@ -18,19 +18,24 @@ export async function connectRabbitMQ() {
 
       await channel.assertExchange(Exchanges.TicketExchange, 'direct', { durable: true });
 
-      await channel.assertQueue(Queues.OrdersService, {
+      await channel.assertQueue(Queues.OrdersServiceTicketCreated, {
         durable: true,
         arguments: { 'x-queue-type': 'quorum' },
       });
 
       await channel.bindQueue(
-        Queues.OrdersService,
+        Queues.OrdersServiceTicketCreated,
         Exchanges.TicketExchange,
         QueuesBindings.TicketCreated,
       );
 
+      await channel.assertQueue(Queues.OrdersServiceTicketUpdated, {
+        durable: true,
+        arguments: { 'x-queue-type': 'quorum' },
+      });
+
       await channel.bindQueue(
-        Queues.OrdersService,
+        Queues.OrdersServiceTicketUpdated,
         Exchanges.TicketExchange,
         QueuesBindings.TicketUpdated,
       );

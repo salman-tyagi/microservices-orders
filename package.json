@@ -20,7 +20,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@tyagi-s/common": "^3.1.2",
+    "@tyagi-s/common": "^3.2.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
