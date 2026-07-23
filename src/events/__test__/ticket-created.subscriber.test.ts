@@ -39,7 +39,12 @@ it('should create a ticket and save it', async () => {
   expect(ticket?.price + '').toEqual(event.price);
 });
 
-it('should acknowledged the message', async () => {
+it('should acknowledge the message', async () => {
+  const { subscriber, event, message } = await setup();
+
   // Call the onMessage function with data + message object
+  await subscriber.onMessage(event, message);
+
   // Write assertions to make sure the message was acknowledged
+  expect(channel.ack).toHaveBeenCalled();
 });
