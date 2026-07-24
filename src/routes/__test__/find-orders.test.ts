@@ -1,5 +1,4 @@
 import request from 'supertest';
-import mongoose from 'mongoose';
 
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket.model';
@@ -67,13 +66,13 @@ describe('GET /api/orders', () => {
         price: 100,
         createdAt: expect.any(String),
         updatedAt: expect.any(String),
-        __v: expect.any(Number),
+        version: expect.any(Number),
       },
       status: OrderStatus.Created,
       expiresAt: expect.any(String),
       createdAt: expect.any(String),
       updatedAt: expect.any(String),
-      __v: expect.any(Number),
+      version: expect.any(Number),
     };
 
     expect(res.body.length).toEqual(2);

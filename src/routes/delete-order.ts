@@ -26,13 +26,13 @@ router.delete(
       { returnDocument: 'after', runValidators: true },
     ).populate<{ ticket: { id: string; title: string; price: number } }>('ticket');
 
-
     if (!deletedOrder) throw NotFoundException('Order not found to delete');
 
     // Publish a cancelled order event
     new OrderCancelledPublisher(channel).publish({
       id: deletedOrder.id,
       ticket: { id: deletedOrder.ticket.id },
+      version: deletedOrder.version,
     });
 
     res.status(204).send(deletedOrder);

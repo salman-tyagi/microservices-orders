@@ -3,7 +3,7 @@ import { OrderStatus } from '@tyagi-s/common';
 
 import { BaseOrderSchema, OrderModel } from '../dtos/order.dto';
 
-const EXPIRATION_WINDOW_ORDER = 10 * 60 * 1000;
+const EXPIRATION_ORDER_WINDOW = 10 * 60 * 1000;
 
 const orderSchema = new mongoose.Schema<BaseOrderSchema, OrderModel>(
   {
@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema<BaseOrderSchema, OrderModel>(
     },
     expiresAt: {
       type: mongoose.Schema.Types.Date,
-      default: new Date(Date.now() + EXPIRATION_WINDOW_ORDER),
+      default: new Date(Date.now() + EXPIRATION_ORDER_WINDOW),
     },
   },
   {

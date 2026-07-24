@@ -60,5 +60,5 @@ it('should not acknowledge the ticket if skipped version is captured', async () 
     await subscriber.onMessage(data, msg);
   } catch {}
 
-  expect(channel.ack).toHaveBeenCalled();
+  expect(channel.ack).not.toHaveBeenCalled();
 });

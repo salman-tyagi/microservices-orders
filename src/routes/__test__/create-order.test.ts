@@ -71,7 +71,7 @@ describe('POST /api/orders', () => {
       expiresAt: expect.any(String),
       createdAt: expect.any(String),
       updatedAt: expect.any(String),
-      __v: expect.any(Number),
+      version: expect.any(Number),
     });
   });
 

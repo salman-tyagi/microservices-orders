@@ -40,6 +40,7 @@ router.post(
       status: order.status,
       expiresAt: order.expiresAt!,
       ticket: { id: ticket.id, price: ticket.price },
+      version: order.version,
     });
 
     res.status(201).send(order);
