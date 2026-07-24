@@ -5,6 +5,7 @@ import { TicketCreatedEvent } from '@tyagi-s/common';
 import { channel } from '../../rabbitmq';
 import { TicketCreatedSubscriber } from '../subscribers/ticket-created.subscriber';
 import { Ticket } from '../../models/ticket.model';
+import { TicketUpdatedSubscriber } from '../subscribers/ticket-updated.subscriber';
 
 const setup = async function () {
   // create a ticket subscriber instance

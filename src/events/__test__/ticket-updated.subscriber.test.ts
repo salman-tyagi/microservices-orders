@@ -50,3 +50,15 @@ it('should acknowledge the message', async () => {
 
   expect(channel.ack).toHaveBeenCalled();
 });
+
+it('should not acknowledge the ticket if skipped version is captured', async () => {
+  const { subscriber, data, msg, ticket } = await setup();
+
+  data.version = 10;
+
+  try {
+    await subscriber.onMessage(data, msg);
+  } catch {}
+
+  expect(channel.ack).toHaveBeenCalled();
+});
